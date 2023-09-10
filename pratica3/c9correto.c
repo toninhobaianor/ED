@@ -1,18 +1,15 @@
  #include <stdlib.h>
 
-int* f(int *x) {
+void f(void) {
 
-  x = malloc(10 * sizeof(int));
+  int *x = malloc(10 * sizeof(int));
   x[10] = 0; 
-  return x;
+  free(x);
 }
 
 int main(void) {
 
-  int *x;
-  f(x);
-  free(x);
-
+  f();
   return 0;
 }
 
