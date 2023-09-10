@@ -1,0 +1,1 @@
+O problema aqui foi o tamnho da alocação ou o numero de iterações do for,ou seriam 11 espaços na alocação feita na variavel a ou o for seria ate 10,para resolver simplesmente seria aumentar o numero de espaços ou diminuir as iteraçõesdo for um dos dois.
