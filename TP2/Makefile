@@ -4,9 +4,9 @@ SRC = src
 OBJ = obj
 INC = include
 BIN = bin
-OBJS = $(OBJ)/listaencadeada.o $(OBJ)/graph.o $(OBJ)/mainteste.o
-HDRS = $(INC)/listaencadeada.h $(INC)/graph.h
-CFLAGS = -Wall -c -I$(INC)
+OBJS = $(OBJ)/metodos.o $(OBJ)/mainteste.o $(OBJ)/graph.o
+HDRS = $(INC)/metodos.h $(INC)/graph.h
+CFLAGS = -Wall -c -I $(INC)
 
 EXE = $(BIN)/mainteste
 
@@ -19,8 +19,8 @@ $(BIN)/mainteste: $(OBJS)
 $(OBJ)/mainteste.o: $(HDRS) $(SRC)/mainteste.c
 	$(CC) $(CFLAGS) -o $(OBJ)/mainteste.o $(SRC)/mainteste.c
 
-$(OBJ)/listaencadeada.o: $(HDRS) $(SRC)/listaencadeada.c
-	$(CC) $(CFLAGS) -o $(OBJ)/listaencadeada.o $(SRC)/listaencadeada.c
+$(OBJ)/metodos.o: $(HDRS) $(SRC)/metodos.c
+	$(CC) $(CFLAGS) -o $(OBJ)/metodos.o $(SRC)/metodos.c
 
 $(OBJ)/graph.o: $(HDRS) $(SRC)/graph.c
 	$(CC) $(CFLAGS) -o $(OBJ)/graph.o $(SRC)/graph.c

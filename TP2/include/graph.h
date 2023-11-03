@@ -1,35 +1,68 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 
-/*  Você pode inserir os includes necessários para que sua classe funcione.
- * Nenhuma outra alteração neste arquivo é permitida
- */
-
-
-/*  Você deve implementar struct s_grafo como um TAD que irá armazenar
- * os dados de um grafo. Lembrando que a estratégia utilizada deve ser uma
- * lista de adjacencia e deve ser implementada como uma lista encadeada.
- */
 struct s_vert{
     int id;
     int cor;
 };
+
 typedef struct s_vert Vertice;
 
-struct s_cel{
-    Vertice v;
-    int *ligacoes;
-};
-typedef struct s_cel Celula;
-
-Vertice NovoVertice(int id,int cor);
+Vertice NovoVertice(int id,int cor,Vertice v);
 int Getid(Vertice v);
 int Getcor(Vertice v);
 
-Celula NovaCelula(Vertice v,int* liga);
-Vertice GetVertice(Celula c);
-void SetVertice(Celula c,Vertice v);
-int* Getligacoes(Celula c);
-void Setligacoes(Celula c,int* liga);
+struct celula {
+    int item;
+    struct celula* prox;
+};
+typedef struct celula Tipocelula;
+
+Tipocelula* Novacelula();
+
+typedef struct {
+    Tipocelula *primeiro;
+    Tipocelula *ultimo;
+    int tamanho;
+}Lista;
+
+Lista* NovaLista();
+int GetItem(int pos,Lista *l);
+void SetItem(int pos,int item,Lista *l);
+void InsereInicio(int item,Lista *l);
+void InserePosicao(int item,int pos,Lista *l);
+int RemovePosicao(int pos,Lista *l);
+int Pesquisa(int c,Lista *l);
+void Imprime(Lista *l);
+void limpa(Lista *l);
+Tipocelula* posiciona(int pos,char *arr,Lista *l);
+
+
+struct s_cel{
+    Lista* ligacoes;
+    struct s_cel* prox;
+};
+typedef struct s_cel Celula;
+
+typedef struct {
+    Celula *primeiro;
+    Celula *ultimo;
+    int tamanho;
+}Colecao;
+
+
+
+Celula* NovaCelula(Lista* liga);
+Lista* Getligacoes(Celula* c);
+void Setligacoes(Celula* c,Lista* liga);
+
+Colecao* NovaColecao();
+void InsereIni(Lista *l,Colecao *c);
+void InserePos(int pos,Lista *l,Colecao *c);
+Lista* RemovePos(int pos,Colecao *c);
+Celula Pesq(int p,Colecao *c);
+void Escreve(Colecao *c);
+void apaga(Colecao *c);
+Celula* posicio(int pos,char *arr,Colecao *c);
 
 #endif
