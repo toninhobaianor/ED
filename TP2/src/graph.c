@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "../include/graph.h"
+#include "graph.h"
 
 // struct Vertice
 Vertice NovoVertice(int id,int cor,Vertice v){
@@ -109,23 +109,21 @@ int RemovePosicao(int pos,Lista *l){
 }
 
 int Pesquisa(int c,Lista *l){
-    int aux = 0;
     Tipocelula *p;
     if(l->tamanho == 0){
         printf("ERRO: lista vazia");
     }
 
     p = l->primeiro->prox;
-    aux = -1;
 
     while(p!=NULL){
         if(p->item == c){
-            aux = p->item;
+            return 1;
             break;
         }
         p = p->prox;
     }
-    return aux;
+    return 0;
 }
 
 void Imprime(Lista *l){
@@ -177,6 +175,7 @@ Celula* NovaCelula(Lista* liga){
     Celula *c;
     c = (Celula*)malloc(sizeof(Celula));
     c->ligacoes = liga;
+    c->prox = NULL;
     return c;
 }
 
@@ -201,7 +200,7 @@ Colecao* NovaColecao(){
     l = NovaLista();
     p = NovaCelula(l);
     c->primeiro = p;
-    c->ultimo = NULL;
+    c->ultimo = c->primeiro;
     c->tamanho = 0;
     return c;
 }
