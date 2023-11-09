@@ -118,11 +118,24 @@ int main(){
     l = NovaLista();
     int *vet;
     vet = (int*)malloc(2 * sizeof(int));
+    int *vet2;
+    vet2 = (int*)malloc(3 * sizeof(int));
+    int *vet1;
     vet[0] = 1;
     vet[1] = 2;
+
+    vet2[0] = 5;
+    vet2[1] = 0;
+    vet2[2] = 1;
+  
     InsereInicio(vet,2,l);
+    InserePosicao(vet2, 3, 1,l);
+    vet1 = GetItem(2, l);
+    for(int i = 0;i < 3;i++){
+      printf("%d",vet1[i]);
+    }
     //InserePosicao(1,1,l);
-    Imprime(l);
+    //Imprime(l);
     limpa(l);
     free(l);
 }

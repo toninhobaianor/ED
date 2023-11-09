@@ -207,73 +207,70 @@ void Meu_metodo(Vertice *v, int n) {
   }
 }
 
-/*
-void AlteraLista(Colecao *c,int v1,int v2){
-    int i;
-    int j;
-    Celula *p;
-    Tipocelula *aux;
-    p = c->primeiro->prox;
-    Lista *l;
-    while(p!=NULL){
-        l = p->ligacoes;
-        i = Pesquisa(v1,l);
-        j = Pesquisa(v2,l);
-        if(i == 1){
-            aux = l->primeiro->prox;
-            while(aux!=NULL){
-                if(aux->item == v1){
-                    aux->item = v2;
-                    break;
+Vertice procura(Vertice* v,int n,int id){
+    Vertice aux;
+    for(int i = 0;i < n;i++){
+        if(v[i].id == id){
+            aux = v[i];
+        }
+    }
+    return aux;
+}
+
+int gulosidade(Vertice *v,int n,Lista *l){
+    //aqui precisamos olhar os vizinhos de um vertice,para saber se ele tem vizinhos menores que ele
+    int k = v[n - 1].cor;
+    int count = 1;
+    int y = k - 1;
+    for(int i = 1;i <= n;i++){
+        if(v[n - i].cor == y){
+            y--;
+            count++;
+        }
+    }
+    if(count < k){
+        return 0;
+    }
+
+    int i = 0;
+    int c = 1;
+    int *val;
+    int cont = 0;
+    Vertice atual;
+    while(i < n){
+        int vert = v[i].id;
+        int corvert = v[i].cor;
+        val = RemovePosicao(vert,l);//pegando as ligações do vertice
+        if(corvert == 1){
+            for(int j = 0; j < sizeof(val);j++){
+                int idatual;
+                idatual = val[j];
+                atual = procura(v,n,idatual);
+                if(corvert == atual.cor){
+                    return 0;
                 }
-                aux = aux->prox;
             }
-            if(j == 1){
-                while(aux!=NULL){
-                    if(aux->item == v2){
-                        aux->item = v1;
-                        break;
-                    }
-                    aux = aux->prox;
-                }
-                p = p->prox;
-            }
-            else{
-                p = p->prox;
-            }
+            cont++;
         }
         else{
-            if(j == 1){
-                aux = l->primeiro->prox;
-                while(aux!=NULL){
-                    if(aux->item == v2){
-                        aux->item = v1;
+            for(int j = 0; j < sizeof(val);j++){
+                int idatual;
+                idatual = val[j];
+                atual = procura(v,n,idatual);
+                if(corvert == atual.cor){
+                    return 0;
+                }
+                if(atual.cor == c){
+                    c++;
+                    if(c == corvert - 1){
+                        cont++;
                         break;
                     }
-                    aux = aux->prox;
                 }
-                p = p->prox;
             }
-            else{
-                p = p->prox;
-            }
-
         }
     }
-}
-*/
-int gulosidade(Vertice *v, int n) {
-  int k = v[n - 1].cor;
-  int count = 1;
-  int y = k - 1;
-  for (int i = 1; i <= n; i++) {
-    if (v[n - i].cor == y) {
-      y--;
-      count++;
+    if(cont == n){
+        return 1;
     }
-  }
-  if (count < k) {
-    return 0;
-  }
-  return 1;
 }

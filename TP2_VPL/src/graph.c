@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "graph.h"
+#include "../include/graph.h"
 
 // struct Vertice
 Vertice NovoVertice(int id,int cor,Vertice v){
@@ -47,7 +47,7 @@ Lista* NovaLista(){
 
 int* GetItem(int pos,Lista *l){
     Tipocelula *p;
-    char arr[6] = "false";
+    char arr[6] = "true";
     p = posiciona(pos,arr,l);
     return p->item;
 }

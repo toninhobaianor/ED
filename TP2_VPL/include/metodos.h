@@ -22,8 +22,7 @@ void Mergesort(Vertice *v,Vertice *vs,int Esquerda,int Direita);
 int getNextGap(int gap);
 void Meu_metodo(Vertice *v,int n);
 
-void AlteraLista(int v1,int v2);
-
-int gulosidade(Vertice *v,int n);
+Vertice procura(Vertice* v,int n,int id);
+int gulosidade(Vertice *v,int n,Lista *l);
 
 #endif
