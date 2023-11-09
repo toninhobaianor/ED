@@ -4,10 +4,9 @@ SRC = src
 OBJ = obj
 INC = include
 BIN = bin
-OBJS = $(OBJ)/metodos.o $(OBJ)/mainteste.o $(OBJ)/graph.o
+OBJS = $(OBJ)/metodos.o $(OBJ)/main.o $(OBJ)/mainteste.o $(OBJ)/graph.o
 HDRS = $(INC)/metodos.h $(INC)/graph.h
 CFLAGS = -Wall -c -I $(INC)
-
 EXE = $(BIN)/mainteste
 
 all:$(EXE)
@@ -15,6 +14,9 @@ all:$(EXE)
 
 $(BIN)/mainteste: $(OBJS)
 	$(CC) -pg -o $(BIN)/mainteste $(OBJS) $(LIBS)
+
+$(OBJ)/main.o: $(HDRS) $(SRC)/main.c
+	$(CC) $(CFLAGS) -o $(OBJ)/main.o $(SRC)/main.c
 
 $(OBJ)/mainteste.o: $(HDRS) $(SRC)/mainteste.c
 	$(CC) $(CFLAGS) -o $(OBJ)/mainteste.o $(SRC)/mainteste.c

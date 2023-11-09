@@ -1,40 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "graph.h"
-#include "metodos.h"
+#include "../include/graph.h"
+#include "../include/metodos.h"
+
 
 int main(){
+    // teste geral
+    /*
     Vertice *vs;
-    vs = (Vertice*)malloc(5 * sizeof(Vertice));
+    vs = (Vertice*)malloc(6 * sizeof(Vertice));
+
+    Vertice *v6;
+    v6 = (Vertice*)malloc(6 * sizeof(Vertice));
+      
     Vertice v;
-    v = NovoVertice(1,1,v);
+    v = NovoVertice(0,1,v);
     Vertice v1;
-    v1 = NovoVertice(2,2,v1);
+    v1 = NovoVertice(1,2,v1);
     Vertice v2;
-    v2 = NovoVertice(3,3,v2);
+    v2 = NovoVertice(2,3,v2);
     Vertice v3;
-    v3 = NovoVertice(4,4,v3);
+    v3 = NovoVertice(3,2,v3);
     Vertice v4;
-    v4 = NovoVertice(5,5,v4);
-    vs[0] = v4;
-    vs[1] = v3;
-    vs[2] = v1;
-    vs[3] = v;
-    vs[4] = v2;
-    Bolha(vs,5);
+    v4 = NovoVertice(4,1,v4);
+    Vertice v7;
+    v7 = NovoVertice(5,1,v7);
+    vs[0] = v;
+    vs[1] = v1;
+    vs[2] = v2;
+    vs[3] = v3;
+    vs[4] = v4;
+    vs[5] = v7;
+    //Meu_metodo(vs, 4);
+    //Heapsort(vs, 4);
+    Mergesort(vs,v6,0, 6);
+    //Bolha(vs,6);
     //Selecao(vs,3);
     //Insercao(vs,3);
+  free(vs);
+  free(v6);
+    //int i = gulosidade(vs,5);
+    //printf("%d",i);
     Vertice v5;
-    for(int i = 0;i < 5;i++){
+    for(int i = 0;i < 6;i++){
         v5 = vs[i];
         printf("%d",Getid(v5));
         printf("%d",Getcor(v5));
         printf("\n");
     }
-    //int i = gulosidade(vs,5);
-    //printf("%d",i);
-    printf("\n");
-    
+    */
+    //printf("\n");
+    /*
     //Lista*l;
     //l = NovaLista();
     //InsereInicio(1,l);
@@ -43,7 +59,7 @@ int main(){
     //limpa(l);
     //free(l);
     // lista dos vertices
-    /*
+    
     Vertice v;
     v = NovoVertice(1,1,v);
     Vertice v1;
@@ -97,4 +113,17 @@ int main(){
     free(l2);
     limpa(l3);
     free(l3)*/
+    //nova lista de ligaçoes
+    Lista*l;
+    l = NovaLista();
+    int *vet;
+    vet = (int*)malloc(2 * sizeof(int));
+    vet[0] = 1;
+    vet[1] = 2;
+    InsereInicio(vet,2,l);
+    //InserePosicao(1,1,l);
+    Imprime(l);
+    limpa(l);
+    free(l);
 }
+        
