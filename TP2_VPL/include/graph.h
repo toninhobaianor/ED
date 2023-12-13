@@ -30,6 +30,7 @@ typedef struct {
 Lista* NovaLista();
 int* GetItem(int pos,Lista *l);
 void SetItem(int pos,int *item,Lista *l);
+int GetSize(int pos,Lista *l);
 void InsereInicio(int *item,int size,Lista *l);
 void InserePosicao(int *item,int size,int pos,Lista *l);
 int* RemovePosicao(int pos,Lista *l);

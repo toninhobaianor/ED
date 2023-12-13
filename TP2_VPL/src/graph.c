@@ -59,6 +59,13 @@ void SetItem(int pos,int *item,Lista *l){
     p->item = item;
 }
 
+int GetSize(int pos,Lista *l){
+    Tipocelula *p;
+    char arr[6] = "true";
+    p = posiciona(pos,arr,l);
+    return p->tam;
+}
+
 void InsereInicio(int *item,int size,Lista *l){
     Tipocelula *p;
     Tipocelula *nova;

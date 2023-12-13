@@ -136,8 +136,6 @@ void Quicksort(Vertice *v, int n) { Ordena(0, n - 1, v); }
 
 // terminar o merge sort e testar
 void merge(Vertice *v, Vertice *vs, int nl, int nr, int meio) {
-  // copiar as coisas para um vetor auxiliar,como se estivessivamos quebrando
-  // ele,mas na verdade estamos apenas ordenando pedações de um vetor inteiro
   int i = 0;
   int j = 0;
   int k = 0;
@@ -157,7 +155,7 @@ void merge(Vertice *v, Vertice *vs, int nl, int nr, int meio) {
       k++;
     }
     for (; j < meio + 1; j++) {
-      vs[k] = v[meio +1 + j];
+      vs[k] = v[meio + 1 + j];
       k++;
     }
   }
@@ -177,7 +175,7 @@ void Mergesort(Vertice *v, Vertice *vs, int Esquerda, int Direita) {
   }
 }
 
-int getNextGap(int gap){
+int getNextGap(int gap) {
   gap = (gap * 10) / 13;
 
   if (gap < 1) {
@@ -207,14 +205,14 @@ void Meu_metodo(Vertice *v, int n) {
   }
 }
 
-Vertice procura(Vertice* v,int n,int id){
-    Vertice aux;
-    for(int i = 0;i < n;i++){
-        if(v[i].id == id){
-            aux = v[i];
-        }
+Vertice procura(Vertice *v, int n, int id) {
+  Vertice aux;
+  for (int i = 0; i < n; i++) {
+    if (v[i].id == id) {
+      aux = v[i];
     }
-    return aux;
+  }
+  return aux;
 }
 
 int gulosidade(Vertice *v,int n,Lista *l){
@@ -231,46 +229,48 @@ int gulosidade(Vertice *v,int n,Lista *l){
     if(count < k){
         return 0;
     }
-
+    int cor = 1;
     int i = 0;
-    int c = 1;
-    int *val;
-    int cont = 0;
-    Vertice atual;
+    int cont = 1;
+    int *conexoes;
+    Vertice vert_atual;
     while(i < n){
-        int vert = v[i].id;
-        int corvert = v[i].cor;
-        val = RemovePosicao(vert,l);//pegando as ligações do vertice
-        if(corvert == 1){
-            for(int j = 0; j < sizeof(val);j++){
-                int idatual;
-                idatual = val[j];
-                atual = procura(v,n,idatual);
-                if(corvert == atual.cor){
-                    return 0;
-                }
-            }
+        int vert_id = v[i].id;
+        int vert_cor = v[i].cor;
+        conexoes = GetItem(vert_id + 1,l);
+        int tam = GetSize(vert_id + 1,l);
+        if(tam == 0){
             cont++;
         }
-        else{
-            for(int j = 0; j < sizeof(val);j++){
-                int idatual;
-                idatual = val[j];
-                atual = procura(v,n,idatual);
-                if(corvert == atual.cor){
-                    return 0;
-                }
-                if(atual.cor == c){
-                    c++;
-                    if(c == corvert - 1){
-                        cont++;
-                        break;
-                    }
-                }
+        int vert_atual_id;
+        int vert_cor_atual;
+
+        for(int j = 0;j < tam;j++){
+            vert_atual_id = conexoes[j];
+            printf("%d ",vert_atual_id);
+            vert_atual = procura(v,n,vert_atual_id);
+            vert_cor_atual = vert_atual.cor;
+
+            if(vert_cor_atual == vert_cor){
+                return 0;
             }
+            if(vert_cor_atual == cor && vert_cor > 1){
+                cor++;
+            }
+            if(cor == vert_cor && vert_cor > 1){
+                cont++;
+                break;
+            }
+
         }
+        printf("\n");
+        cor = 1;
+        i++;
     }
+
     if(cont == n){
         return 1;
     }
+
+    return 0;
 }

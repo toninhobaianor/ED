@@ -6,6 +6,79 @@
 
 int main(){
     // teste geral
+    Vertice *vs;
+    vs = (Vertice*)malloc(5 * sizeof(Vertice));
+
+    //Vertice *v6;
+    //v6 = (Vertice*)malloc(6 * sizeof(Vertice));
+
+    Vertice v;
+    v = NovoVertice(0,1,v);
+    Vertice v1;
+    v1 = NovoVertice(1,2,v1);
+    Vertice v2;
+    v2 = NovoVertice(2,1,v2);
+    Vertice v3;
+    v3 = NovoVertice(3,3,v3);
+    Vertice v4;
+    v4 = NovoVertice(4,2,v4);
+  
+    vs[0] = v1;
+    vs[1] = v;
+    vs[2] = v2;
+    vs[3] = v3;
+    vs[4] = v4;
+
+    Lista*l;
+    l = NovaLista();
+    int *vet;
+    vet = (int*)malloc(2 * sizeof(int));
+    int *vet1;
+    vet1 = (int*)malloc(2 * sizeof(int));
+    int *vet2;
+    vet2 = (int*)malloc(2 * sizeof(int));
+
+    int *vet3;
+    vet3 = (int*)malloc(2 * sizeof(int));
+    int *vet4;
+    vet4 = (int*)malloc(2 * sizeof(int));
+  
+    vet[0] = 1;
+    vet[1] = 4;
+
+    vet1[0] = 0;
+    vet1[1] = 2;
+  
+    vet2[0] = 1;
+    vet2[1] = 3;
+  
+    vet3[0] = 2;
+    vet3[1] = 4;
+
+    vet4[0] = 0;
+    vet4[1] = 3;
+
+    InsereInicio(vet,2,l);
+    InserePosicao(vet1, 2, 1,l);
+    InserePosicao(vet2, 2, 2,l);
+    InserePosicao(vet3, 2, 3,l);
+    InserePosicao(vet4, 2, 4,l);
+
+    Bolha(vs,5);
+
+    int i = gulosidade(vs,5,l);
+    printf("%d ",i);
+    /*Vertice v5;
+    for(int i = 0;i < 5;i++){
+        v5 = vs[i];
+        printf("%d ",Getid(v5));
+        printf("%d ",Getcor(v5));
+        printf("\n");
+    }*/
+    free(vs);
+    limpa(l);
+    free(l);
+    //free(v6);
     /*
     Vertice *vs;
     vs = (Vertice*)malloc(6 * sizeof(Vertice));
@@ -114,6 +187,7 @@ int main(){
     limpa(l3);
     free(l3)*/
     //nova lista de ligaçoes
+  /*
     Lista*l;
     l = NovaLista();
     int *vet;
@@ -138,5 +212,6 @@ int main(){
     //Imprime(l);
     limpa(l);
     free(l);
+  */
 }
         
