@@ -1,0 +1,17 @@
+1.
+    Aqui estamos utilizando de um fatorial recursivo que se utiliza de uma pilha para ser resolvido(uma chamada da função fica em cima da outra,quanto a primeira não e resolvido as outras ficaram em "aguardo" na pilha).
+2.
+    Usamos o Cachegrind e o Callgrind para observar e analisar como a memoria e usada .
+3.
+    Usaremos o fatorial de 9 para testar completamente o codigo.
+4.
+    Execução do Cachegrind.
+5.
+    Execução do Callgrind.
+6.
+    6.1
+        Devido a ser um programa recursivo ele consome um certa parte da memoria devido as varias chamadas da função.
+    6.2
+        aqui temos a utilizção da propria pilha de memoria do computador.
+    6.3
+        Usando apenas a pilha.
